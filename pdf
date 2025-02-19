@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès au PDF</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var pdfUrl = "https://simplebooklet.com/yourparagraphtext475"; // 🔄 Ton lien PDF
+            
+            // ✅ Détection du WebView Facebook & Instagram
+            var isFacebookWebView = /FBAN|FBAV|Instagram/.test(navigator.userAgent);
+
+            if (isFacebookWebView) {
+                // 🔴 Alerte utilisateur pour quitter Facebook WebView
+                alert("⚠️ Ouvrez ce lien dans Chrome ou Safari !\n📌 Cliquez sur les 3 points en haut à droite\n📌 Puis sélectionnez 'Ouvrir dans le navigateur'");
+
+                // 🔵 Redirection vers Chrome sur Android si possible
+                window.location.href = "googlechrome://" + pdfUrl.replace(/^https?:\/\//, "");
+            } else {
+                // ✅ Redirection vers le PDF directement si on est déjà sur un vrai navigateur
+                window.location.href = pdfUrl;
+            }
+        });
+    </script>
+</head>
+<body>
+    <h2>Chargement du PDF...</h2>
+    <p>Si rien ne se passe, <a href="https://simplebooklet.com/yourparagraphtext475" target="_blank">cliquez ici</a>.</p>
+</body>
+</html>
